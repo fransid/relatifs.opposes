@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiche d'exercices – Nombres relatifs (5e) – Sid KHALIFA</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--bleu:#1b5fa7;--bleu2:#e6f0fb;--orange:#f08a1c;--orange2:#fff3e2;--vert:#1e9e4a;--vert2:#e3f6ea;--rouge:#d6342c;--rouge2:#fde8e6;--encre:#1d2b3a}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Nunito','Trebuchet MS',Verdana,sans-serif;color:var(--encre);line-height:1.55;background-color:#f4f8fd;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='360' height='360' viewBox='0 0 360 360' fill='none' stroke='%231b5fa7' stroke-width='2' opacity='.13' font-family='Georgia,serif' font-size='44' fill='%231b5fa7'><text x='20' y='60' stroke='none'>π</text><text x='150' y='50' stroke='none'>√x</text><text x='270' y='70' stroke='none'>±</text><text x='60' y='170' stroke='none'>÷</text><text x='190' y='160' stroke='none'>−7</text><text x='300' y='190' stroke='none'>×</text><text x='20' y='290' stroke='none'>+3,5</text><text x='170' y='300' stroke='none'>∞</text><text x='280' y='320' stroke='none'>x²</text><path d='M100 110 l30 -50 l30 50 z'/><circle cx='320' cy='120' r='22'/><path d='M230 220 h70 v50 h-70 z'/><path d='M20 330 h120 M30 322 v16 M60 322 v16 M90 322 v16 M120 322 v16'/></svg>");
+background-attachment:fixed}
+.page{max-width:900px;margin:0 auto;padding:18px 14px 60px}
+header{background:#fff;border:3px solid var(--bleu);border-radius:14px;overflow:hidden;box-shadow:6px 6px 0 var(--bleu2)}
+.bandeau{display:flex;gap:22px;align-items:center;flex-wrap:wrap;padding:16px 20px}
+.bandeau img{display:block;width:285px;max-width:100%;height:auto;border-radius:6px}
+.bandeau h1{margin:0;font-size:1.7rem;line-height:1.2;color:var(--bleu);font-weight:800}
+.bandeau p{margin:6px 0 0;font-family:'Patrick Hand',cursive;font-size:1.3rem;color:var(--orange)}
+.niveau{background:var(--bleu);color:#fff;padding:8px 20px;font-weight:600}
+.consigne{margin:18px 0;padding:12px 16px;background:var(--orange2);border-left:6px solid var(--orange);border-radius:6px}
+.ex{background:#fff;border:2px solid var(--bleu);border-radius:12px;margin:22px 0;overflow:hidden}
+.ex h2{margin:0;display:flex;align-items:center;gap:12px;background:var(--bleu2);padding:10px 16px;font-size:1.15rem;color:var(--bleu);border-bottom:2px solid var(--bleu)}
+.num{background:var(--orange);color:#fff;font-weight:800;min-width:34px;height:34px;display:grid;place-items:center;border-radius:6px 6px 6px 0}
+.ex .cons{padding:10px 16px 0;margin:0}
+.liste{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;padding:14px 16px 18px}
+.q{border:1.5px dashed #9bb8da;border-radius:8px;padding:10px 12px;background:#fbfdff}
+.q b{color:var(--bleu);font-size:1.05rem}
+.q .champs{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.fld{font:inherit;font-size:1rem;padding:6px 9px;width:130px;border:2px solid #9bb8da;border-radius:6px;background:#fff;color:var(--encre)}
+select.fld{width:150px}
+.fld:focus{outline:3px solid #ffd49a}
+.fld.ok{border-color:var(--vert);background:var(--vert2);color:#0d6b2d;font-weight:800}
+.fld.ko{border-color:var(--rouge);background:var(--rouge2);color:#9c1d17;font-weight:800}
+.mark{font-weight:800;align-self:center}.ok+.mark{color:var(--vert)}.ko+.mark{color:var(--rouge)}
+.barre{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:26px 0 10px}
+button{font:inherit;font-weight:800;border:0;border-radius:8px;padding:11px 20px;cursor:pointer;color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+button:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.2)}
+button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.b1{background:var(--bleu)}.b2{background:var(--vert)}.b3{background:var(--orange)}.b4{background:#6b7a8c}
+#score{font-weight:800;font-size:1.1rem;padding:8px 14px;background:#fff;border:2px solid var(--bleu);border-radius:8px}
+#corrige{display:none;background:#fff;border:3px solid var(--vert);border-radius:12px;padding:6px 18px 18px;margin-top:20px}
+#corrige.on{display:block}
+#corrige h2{color:var(--vert);border-bottom:2px solid var(--vert2);padding-bottom:6px}
+#corrige h3{color:var(--bleu);margin:16px 0 4px;font-size:1.05rem}
+#corrige p{margin:3px 0}
+.rep{color:var(--vert);font-weight:800}
+.regle{background:var(--bleu2);border-left:6px solid var(--bleu);padding:10px 14px;border-radius:6px;margin:12px 0}
+.rappel{background:var(--orange2);border:2px solid var(--orange);border-radius:10px;padding:10px 16px;margin-top:18px}
+footer{text-align:center;color:#51657c;margin-top:30px;font-size:.95rem}
+@media print{.barre{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<div class="bandeau">
+<img src="data:image/jpeg;base64,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" alt="Logo Fransid enseignement">
+<div><h1>Nombres relatifs : opposés, sommes et symétriques</h1><p>Exercice de Sid KHALIFA</p></div>
+</div>
+<div class="niveau">Mathématiques – Niveau 5e (cycle 4) – Nombres relatifs</div>
+</header>
+
+<div class="consigne"><b>Consigne :</b> écris tes réponses dans les cases (utilise la virgule ou le point pour les décimaux, le signe « − » ou « - » pour les négatifs ; le « + » est facultatif). Appuie sur <b>Entrée</b> ou clique ailleurs : la case devient <span style="color:var(--vert);font-weight:800">verte</span> si la réponse est juste, <span style="color:var(--rouge);font-weight:800">rouge</span> sinon.</div>
+
+<div id="exos"></div>
+
+<div class="barre">
+<button class="b1" id="bVerif">Vérifier tout</button>
+<button class="b2" id="bCorr">Corrigé détaillé</button>
+<button class="b3" id="bDl">Télécharger l'exercice (HTML)</button>
+<button class="b4" id="bRaz">Recommencer</button>
+<span id="score">Score : 0 / 0</span>
+</div>
+
+<section id="corrige" aria-live="polite">
+<h2>Corrigé détaillé</h2>
+<div class="regle"><b>Rappel :</b> deux nombres sont <b>opposés</b> s'ils ont la même distance à zéro mais des signes contraires.</div>
+
+<h3>Exercice 1 — Donner l'opposé</h3>
+<p>a) L'opposé de +7,5 est <span class="rep">−7,5</span></p>
+<p>b) L'opposé de −4,25 est <span class="rep">+4,25</span></p>
+<p>c) L'opposé de 0 est <span class="rep">0</span> (0 est le seul nombre égal à son opposé)</p>
+<p>d) L'opposé de +0,05 est <span class="rep">−0,05</span></p>
+<p>e) On simplifie d'abord : −(−6,8) = +6,8, donc l'opposé est <span class="rep">−6,8</span></p>
+<p>f) On simplifie d'abord : −(+3,4) = −3,4, donc l'opposé est <span class="rep">+3,4</span></p>
+
+<h3>Exercice 2 — Reconnaître des opposés</h3>
+<p>a) <span class="rep">Oui</span> : même distance à zéro (9,5) et signes contraires.</p>
+<p>b) <span class="rep">Non</span> : les signes sont identiques ; ces deux nombres sont égaux.</p>
+<p>c) <span class="rep">Non</span> : les distances à zéro sont différentes (3,75 et 3,57).</p>
+<p>d) <span class="rep">Oui</span> : −(−2,6) = +2,6, et +2,6 et −2,6 ont même distance à zéro et des signes contraires.</p>
+<p>e) <span class="rep">Non</span> : les distances à zéro sont différentes (0,1 et 0,01).</p>
+
+<h3>Exercice 3 — Simplifier une écriture</h3>
+<p>a) −(+4,5) = <span class="rep">−4,5</span> ; distance à zéro : <span class="rep">4,5</span></p>
+<p>b) −(−12,75) = <span class="rep">+12,75</span> ; distance à zéro : <span class="rep">12,75</span></p>
+<p>c) +(+0,8) = <span class="rep">+0,8</span> ; distance à zéro : <span class="rep">0,8</span></p>
+<p>d) +(−0,6) = <span class="rep">−0,6</span> ; distance à zéro : <span class="rep">0,6</span></p>
+
+<h3>Exercice 4 — Symétriques par rapport à l'origine O</h3>
+<p>Le symétrique d'un point par rapport à O se place à la même distance de O, de l'autre côté : son abscisse est l'<b>opposé</b> de celle du point de départ. O est le milieu de chaque segment [AA′], [BB′], [CC′] et [DD′].</p>
+<p>A′ a pour abscisse <span class="rep">−3</span> (opposé de +3)</p>
+<p>B′ a pour abscisse <span class="rep">+2,5</span> (opposé de −2,5)</p>
+<p>C′ a pour abscisse <span class="rep">−1,5</span> (opposé de +1,5)</p>
+<p>D′ a pour abscisse <span class="rep">+0,5</span> (opposé de −0,5)</p>
+
+<h3>Exercice 5 — Symétrique par rapport à un point</h3>
+<p>a) Le symétrique de A par rapport à O a pour abscisse l'opposé de +5 : <span class="rep">−5</span>.</p>
+<p>b) L'abscisse de C est l'opposé de −1,5 : <span class="rep">+1,5</span>.</p>
+<p>c) B doit être le milieu de [AE] : −1,5 = (+5 + x<sub>E</sub>) ÷ 2, d'où +5 + x<sub>E</sub> = −3, donc x<sub>E</sub> = <span class="rep">−8</span>.<br>Vérification : (−8 + 5) ÷ 2 = −1,5. On peut aussi compter : de B (−1,5) à A (+5) il y a 6,5 unités ; on reporte 6,5 unités avant B : −1,5 − 6,5 = −8.</p>
+<p>d) Distance AB = +5 − (−1,5) = 5 + 1,5 = <span class="rep">6,5 unités</span>.</p>
+
+<h3>Exercice 6 — Somme de deux nombres relatifs</h3>
+<div class="regle">Signes identiques : on garde le signe et on additionne les distances à zéro. Signes contraires : on garde le signe de celui qui a la plus grande distance à zéro et on soustrait les distances à zéro.</div>
+<p>a) Signes identiques (+) : (+5,5) + (+2,5) = <span class="rep">+8</span></p>
+<p>b) Signes identiques (−) : (−3,2) + (−4,8) = <span class="rep">−8</span></p>
+<p>c) Signes contraires : 9,5 &gt; 7,5, donc le résultat est négatif ; 9,5 − 7,5 = 2 : (+7,5) + (−9,5) = <span class="rep">−2</span></p>
+<p>d) Signes contraires : 10,4 &gt; 6,4, résultat positif ; 10,4 − 6,4 = 4 : <span class="rep">+4</span></p>
+<p>e) Deux nombres opposés : leur somme vaut <span class="rep">0</span></p>
+
+<h3>Exercice 7 — Soustraction de nombres relatifs</h3>
+<div class="regle">Soustraire un nombre, c'est ajouter son opposé : a − b = a + (−b).</div>
+<p>a) (+6,3) − (+9,8) = (+6,3) + (−9,8) = <span class="rep">−3,5</span></p>
+<p>b) (−4,5) − (+2,5) = (−4,5) + (−2,5) = <span class="rep">−7</span></p>
+<p>c) (−7,1) − (−3,6) = (−7,1) + (+3,6) = <span class="rep">−3,5</span></p>
+<p>d) (+2,05) − (−0,95) = (+2,05) + (+0,95) = <span class="rep">+3</span></p>
+
+<h3>Exercice 8 — Sommes algébriques</h3>
+<p>On supprime les parenthèses en appliquant la règle des signes, puis on calcule étape par étape.</p>
+<p>A = 7,5 − 3,5 − 5,5 − 1,5 : 7,5 − 3,5 = 4 ; 4 − 5,5 = −1,5 ; −1,5 − 1,5 = <span class="rep">−3</span></p>
+<p>B = −2,25 − 1,75 − 0,5 + 6,5 : −2,25 − 1,75 = −4 ; −4 − 0,5 = −4,5 ; −4,5 + 6,5 = <span class="rep">+2</span></p>
+<p>C = −4,75 + 2,25 − 1,5 + 4 : −4,75 + 2,25 = −2,5 ; −2,5 − 1,5 = −4 ; −4 + 4 = <span class="rep">0</span></p>
+
+<h3>Exercice 9 — Problèmes</h3>
+<p>1. Monter de 45,5 m revient à ajouter +45,5 ; descendre de 62,5 m revient à ajouter −62,5 :<br>−150 + 45,5 − 62,5 = −104,5 − 62,5 = <span class="rep">−167 m</span>. Le sous-marin se trouve à 167 m de profondeur.</p>
+<p>2. Déposer 50 € revient à ajouter +50 ; un prélèvement de 12,75 € revient à ajouter −12,75 :<br>−35,5 + 50 − 12,75 = 14,5 − 12,75 = <span class="rep">+1,75 €</span>. Le solde est positif : le compte est à nouveau créditeur.</p>
+
+<h3>Exercice 10 — Bilan sur une droite graduée</h3>
+<p>a) E a pour abscisse <span class="rep">−4,5</span> ; F a pour abscisse <span class="rep">+4,5</span> ; G a pour abscisse <span class="rep">+1,5</span>.</p>
+<p>b) <span class="rep">E et F</span> sont symétriques par rapport à O : leurs abscisses sont opposées (−4,5 et +4,5), donc O est le milieu de [EF].</p>
+<p>c) H est le symétrique de G(+1,5) par rapport à O, donc son abscisse est l'opposé de +1,5 : <span class="rep">−1,5</span>.</p>
+<p>d) EF = (+4,5) − (−4,5) = 4,5 + 4,5 = <span class="rep">9 unités</span>. EG = (+1,5) − (−4,5) = 1,5 + 4,5 = <span class="rep">6 unités</span>.</p>
+<p>e) F doit être le milieu de [GM] : (+1,5 + x<sub>M</sub>) ÷ 2 = +4,5, d'où +1,5 + x<sub>M</sub> = +9, donc x<sub>M</sub> = <span class="rep">+7,5</span>.<br>Autre méthode : de G (+1,5) à F (+4,5) il y a 3 unités ; on reporte 3 unités après F : 4,5 + 3 = 7,5.</p>
+
+<div class="rappel"><b>À retenir</b><br>• Opposé d'un nombre : même distance à zéro, signes contraires. Exemple : l'opposé de +7,5 est −7,5.<br>• Symétrique par rapport à O : le point symétrique de M a pour abscisse l'opposé de celle de M ; O est le milieu du segment formé.<br>• Le seul nombre égal à son opposé est 0.<br>• Soustraire, c'est ajouter l'opposé : a − b = a + (−b).<br>• Distance entre deux points : plus grande abscisse − plus petite abscisse.<br>• Symétrique par rapport à un point A : A est le milieu du segment formé par le point et son image.</div>
+</section>
+
+<footer>Exercice conçu par Sid KHALIFA – Fransid enseignement</footer>
+</div>
+
+<script>
+const EX=[
+{t:"Donner l'opposé",c:"Écris l'opposé de chacun des nombres suivants.",q:[
+["a) +7,5",[["n","-7.5"]]],["b) −4,25",[["n","4.25"]]],["c) 0",[["n","0"]]],
+["d) +0,05",[["n","-0.05"]]],["e) −(−6,8)",[["n","-6.8"]]],["f) −(+3,4)",[["n","3.4"]]]]},
+{t:"Reconnaître des opposés",c:"Dis si les nombres de chaque ligne sont opposés.",q:[
+["a) +9,5 et −9,5",[["s","Oui"]]],["b) −8,2 et −8,2",[["s","Non"]]],["c) +3,75 et −3,57",[["s","Non"]]],
+["d) −(−2,6) et −2,6",[["s","Oui"]]],["e) +0,1 et −0,01",[["s","Non"]]]]},
+{t:"Simplifier une écriture",c:"Simplifie l'écriture de chaque nombre, puis donne sa distance à zéro.",q:[
+["a) −(+4,5)",[["n","-4.5","Écriture"],["n","4.5","Distance"]]],
+["b) −(−12,75)",[["n","12.75","Écriture"],["n","12.75","Distance"]]],
+["c) +(+0,8)",[["n","0.8","Écriture"],["n","0.8","Distance"]]],
+["d) +(−0,6)",[["n","-0.6","Écriture"],["n","0.6","Distance"]]]]},
+{t:"Symétriques par rapport à l'origine O",c:"A(+3) ; B(−2,5) ; C(+1,5) ; D(−0,5). Donne l'abscisse du symétrique de chaque point par rapport à O.",q:[
+["A′ symétrique de A(+3)",[["n","-3","Abscisse"]]],["B′ symétrique de B(−2,5)",[["n","2.5","Abscisse"]]],
+["C′ symétrique de C(+1,5)",[["n","-1.5","Abscisse"]]],["D′ symétrique de D(−0,5)",[["n","0.5","Abscisse"]]]]},
+{t:"Symétrique par rapport à un point",c:"Sur une droite graduée d'origine O, A a pour abscisse +5 et B a pour abscisse −1,5.",q:[
+["a) Abscisse du symétrique de A par rapport à O",[["n","-5","Abscisse"]]],
+["b) Abscisse de C, symétrique de B par rapport à O",[["n","1.5","Abscisse"]]],
+["c) Abscisse de E, symétrique de A par rapport à B",[["n","-8","Abscisse"]]],
+["d) Distance AB",[["n","6.5","Distance"]]]]},
+{t:"Somme de deux nombres relatifs",c:"Calcule.",q:[
+["a) (+5,5) + (+2,5)",[["n","8","Résultat"]]],["b) (−3,2) + (−4,8)",[["n","-8","Résultat"]]],["c) (+7,5) + (−9,5)",[["n","-2","Résultat"]]],
+["d) (−6,4) + (+10,4)",[["n","4","Résultat"]]],["e) (−0,5) + (+0,5)",[["n","0","Résultat"]]]]},
+{t:"Soustraction de nombres relatifs",c:"Calcule (soustraire un nombre, c'est ajouter son opposé).",q:[
+["a) (+6,3) − (+9,8)",[["n","-3.5","Résultat"]]],["b) (−4,5) − (+2,5)",[["n","-7","Résultat"]]],
+["c) (−7,1) − (−3,6)",[["n","-3.5","Résultat"]]],["d) (+2,05) − (−0,95)",[["n","3","Résultat"]]]]},
+{t:"Sommes algébriques",c:"Simplifie puis calcule les sommes algébriques suivantes.",q:[
+["A = (+7,5) + (−3,5) − (+5,5) + (−1,5)",[["n","-3","A ="]]],
+["B = (−2,25) − (+1,75) + (−0,5) − (−6,5)",[["n","2","B ="]]],
+["C = (−4,75) + (+2,25) + (−1,5) − (−4)",[["n","0","C ="]]]]},
+{t:"Problèmes",c:"Écris le résultat sous forme d'un nombre relatif.",q:[
+["1. Un sous-marin est à −150 m. Il monte de 45,5 m, puis redescend de 62,5 m. Où se trouve-t-il ?",[["n","-167","Altitude (m)"]]],
+["2. Le compte de Léa affiche −35,50 €. Elle dépose 50 €, puis un prélèvement de 12,75 € est effectué. Nouveau solde ?",[["n","1.75","Solde (€)"]]]]},
+{t:"Bilan sur une droite graduée",svg:()=>line(-6,6,{E:-4.5,G:1.5,F:4.5}),c:"Une graduation = 1 unité. Les points E, F et G sont placés sur la droite d'origine O.",q:[
+["a) Abscisse de E",[["n","-4.5","Abscisse"]]],["a) Abscisse de F",[["n","4.5","Abscisse"]]],["a) Abscisse de G",[["n","1.5","Abscisse"]]],
+["b) Quels points sont symétriques par rapport à O ?",[["s","E et F","E et G|E et F|F et G"]]],
+["c) Abscisse de H, symétrique de G par rapport à O",[["n","-1.5","Abscisse"]]],
+["d) Distance EF",[["n","9","Distance"]]],["d) Distance EG",[["n","6","Distance"]]],
+["e) Abscisse de M, symétrique de G par rapport à F",[["n","7.5","Abscisse"]]]]}];
+function line(a,b,p){const W=(b-a)*40+80,X=v=>40+(v-a)*40;
+ let s=`<svg viewBox="0 0 ${W} 90" role="img" aria-label="Droite graduée" style="display:block;width:100%;max-width:${W+60}px;margin:10px auto 0;padding:0 16px"><line x1="14" y1="50" x2="${W-14}" y2="50" stroke="#1b5fa7" stroke-width="2.5"/>`;
+ for(let v=a;v<=b;v++)s+=`<line x1="${X(v)}" y1="43" x2="${X(v)}" y2="57" stroke="#1b5fa7" stroke-width="2"/><text x="${X(v)}" y="76" text-anchor="middle" font-size="12" fill="#1d2b3a">${v>0?'+'+v:String(v).replace('-','−')}</text>`;
+ for(const k in p)s+=`<circle cx="${X(p[k])}" cy="50" r="5.5" fill="#f08a1c"/><text x="${X(p[k])}" y="34" text-anchor="middle" font-size="16" font-weight="800" fill="#d6342c">${k}</text>`;
+ return s+`<text x="${X(0)}" y="22" text-anchor="middle" font-size="13" fill="#1b5fa7">O</text></svg>`}
+
+const num=v=>{v=v.replace(/\s/g,'').replace(/[−–]/g,'-').replace(',','.').replace(/^\+/,'');return v===''||v==='-'?NaN:Number(v)};
+const root=document.getElementById('exos');
+EX.forEach((e,i)=>{
+ let h=`<section class="ex"><h2><span class="num">${i+1}</span>${e.t}</h2><p class="cons">${e.c}</p>${e.svg?e.svg():''}<div class="liste">`;
+ e.q.forEach(([l,fs])=>{
+  h+=`<div class="q"><b>${l}</b><div class="champs">`;
+  fs.forEach(([ty,a,ph])=>{
+   h+= ty==='s'
+   ?`<select class="fld" data-t="s" data-a="${a}"><option value="">Choisir…</option>${(ph||'Oui|Non').split('|').map(o=>'<option>'+o+'</option>').join('')}</select><span class="mark"></span>`
+   :`<input class="fld" data-t="n" data-a="${a}" placeholder="${ph||'Réponse'}" autocomplete="off" inputmode="text" aria-label="${l}"><span class="mark"></span>`;
+  });
+  h+=`</div></div>`;
+ });
+ root.insertAdjacentHTML('beforeend',h+`</div></section>`);
+});
+const F=[...document.querySelectorAll('.fld')];
+function check(el){
+ const v=el.value.trim();el.classList.remove('ok','ko');const m=el.nextElementSibling;m.textContent='';
+ if(v===''||v==='')return null;
+ const good=el.dataset.t==='s'?v===el.dataset.a:num(v)===Number(el.dataset.a);
+ el.classList.add(good?'ok':'ko');m.textContent=good?'✔':'✘';return good;
+}
+function score(){const r=F.map(check);const n=r.filter(x=>x===true).length;
+ document.getElementById('score').textContent=`Score : ${n} / ${F.length}`;}
+F.forEach(el=>{
+ el.addEventListener('change',()=>{check(el);score()});
+ el.addEventListener('keydown',e=>{if(e.key==='Enter'){check(el);score()}});
+});
+bVerif.onclick=()=>{F.forEach(el=>{if(el.value.trim()==='')el.classList.add('ko')});score()};
+bCorr.onclick=()=>{const c=document.getElementById('corrige');c.classList.toggle('on');
+ bCorr.textContent=c.classList.contains('on')?'Masquer le corrigé':'Corrigé détaillé';
+ if(c.classList.contains('on'))c.scrollIntoView({behavior:'smooth'})};
+bRaz.onclick=()=>{F.forEach(el=>{el.value='';el.classList.remove('ok','ko');el.nextElementSibling.textContent=''});score();window.scrollTo({top:0,behavior:'smooth'})};
+bDl.onclick=()=>{
+ const clone=document.documentElement.cloneNode(true);
+ clone.querySelectorAll('.fld').forEach(f=>{f.removeAttribute('value');f.classList.remove('ok','ko')});
+ clone.querySelectorAll('.mark').forEach(m=>m.textContent='');
+ clone.querySelector('#corrige').classList.remove('on');
+ const b=new Blob(['<!DOCTYPE html>\n'+clone.outerHTML],{type:'text/html'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(b);
+ a.download='exercice_opposes_decimaux_5e_Sid_KHALIFA.html';document.body.appendChild(a);a.click();a.remove();
+};
+score();
+</script>
+</body>
+</html>
